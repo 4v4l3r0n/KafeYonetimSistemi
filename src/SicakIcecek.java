@@ -1,0 +1,2 @@
+public class SicakIcecek {
+}
