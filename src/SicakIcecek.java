@@ -1,2 +1,2 @@
-public class SicakIcecek {
+public class SicakIcecek extends Urun{
 }

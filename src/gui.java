@@ -7,7 +7,6 @@ public class gui {
     private JPanel eklenenUrunler;
     private JPanel urunButonlari;
     private JPanel ustPanel;
-    private JPanel altPanel;
     private JButton cheesecakeButton;
     private JButton sandvicButton;
     private JButton smoothieButton;

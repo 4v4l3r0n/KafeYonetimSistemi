@@ -1,2 +1,2 @@
-public class Tuzlu {
+public class Tuzlu extends Urun{
 }

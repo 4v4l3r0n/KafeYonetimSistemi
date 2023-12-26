@@ -1,2 +1,2 @@
-public class Tatli {
+public class Tatli extends Urun{
 }

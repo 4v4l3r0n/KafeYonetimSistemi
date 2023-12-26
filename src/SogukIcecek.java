@@ -1,2 +1,2 @@
-public class SogukIcecek {
+public class SogukIcecek extends Urun{
 }

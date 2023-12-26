@@ -1,4 +1,4 @@
 public abstract class Urun {
-    int ucret;
+    float fiyat;
     String isim;
 }
