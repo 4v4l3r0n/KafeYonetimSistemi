@@ -31,7 +31,22 @@
             americanoButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    selectItem("Americano");
+                    // Display a dialog for selecting the size
+                    String[] sizes = {"Small", "Medium", "Large"};
+                    String selectedSize = (String) JOptionPane.showInputDialog(
+                            anaPanel,
+                            "Select size:",
+                            "Americano Size",
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            sizes,
+                            sizes[0]);
+
+                    if (selectedSize != null) {
+                        // If a size is selected, add the Americano with the selected size to the order
+                        String itemName = "Americano - " + selectedSize;
+                        selectItem(itemName);
+                    }
                 }
             });
             Iptal.addActionListener(new ActionListener() {
@@ -88,8 +103,8 @@
                     if (parts.length == 3) {
                         float fiyat = Float.parseFloat(parts[0]);
                         String isim = parts[1];
-                        String kod = parts[2];
-                        Urun urun = new Urun(fiyat, isim, kod) {};
+                        String boy = parts[2];
+                        Urun urun = new Urun(fiyat, isim, boy) {};
                         menu.add(urun);
                     }
                 }
@@ -100,7 +115,7 @@
 
         private void selectItem(String itemName) {
             for (Urun urun : menu) {
-                if (urun.isim.equals(itemName)) {
+                if ((urun.isim + " - " + urun.boy).equals(itemName)) {
                     listModel.addElement(itemName);
                     siparis.urunEkle(urun);
                     updateToplamFiyatLabel();

@@ -1,11 +1,11 @@
 public class Urun {
     float fiyat;
     String isim;
-    String kod;
+    String boy;
 
-    public Urun(float fiyat, String isim, String kod) {
+    public Urun(float fiyat, String isim, String boy) {
         this.fiyat = fiyat;
         this.isim = isim;
-        this.kod = kod;
+        this.boy = boy;
     }
 }

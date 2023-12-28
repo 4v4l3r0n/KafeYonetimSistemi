@@ -23,7 +23,7 @@ public class Siparis {
         return a;
     }
     String stringYaz(Urun x){
-        return x.isim+" - "+x.fiyat;
+        return x.isim+" - "+x.boy+" - "+x.fiyat;
     }
     void dosyayaYaz() {
         try {

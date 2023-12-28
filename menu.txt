@@ -1,2 +1,3 @@
-5.0,Americano,A1
+5.0,Americano,Small
+10.0,Americano,Medium
 6.0,Espresso,E1
