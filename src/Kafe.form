@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Kafe">
-  <grid id="27dc6" binding="anaPanel" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="anaPanel" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="-4" y="-1" width="736" height="493"/>
+      <xy x="-4" y="-1" width="789" height="493"/>
     </constraints>
     <properties>
       <background color="-14084082"/>
@@ -21,7 +21,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="ab4b4" binding="urunButonlari" layout-manager="GridLayoutManager" row-count="8" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="ab4b4" binding="urunButonlari" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -32,134 +32,6 @@
             </properties>
             <border type="etched"/>
             <children>
-              <component id="34899" class="javax.swing.JButton" binding="cheesecakeButton" default-binding="true">
-                <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Cheesecake"/>
-                </properties>
-              </component>
-              <component id="25643" class="javax.swing.JButton" binding="sandvicButton">
-                <constraints>
-                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Sandviç"/>
-                </properties>
-              </component>
-              <component id="6cbd9" class="javax.swing.JButton" binding="smoothieButton" default-binding="true">
-                <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Smoothie"/>
-                </properties>
-              </component>
-              <component id="d1548" class="javax.swing.JButton" binding="americanoButton" default-binding="true">
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Americano"/>
-                </properties>
-              </component>
-              <component id="f5c1f" class="javax.swing.JButton" binding="espressoButton" default-binding="true">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Espresso"/>
-                </properties>
-              </component>
-              <component id="e354" class="javax.swing.JButton" binding="bubbleTeaButton" default-binding="true">
-                <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Bubble Tea"/>
-                </properties>
-              </component>
-              <component id="82d3c" class="javax.swing.JButton" binding="cappuccinoButton" default-binding="true">
-                <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Cappuccino"/>
-                </properties>
-              </component>
-              <component id="bf18e" class="javax.swing.JButton" binding="latteButton" default-binding="true">
-                <constraints>
-                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Latte"/>
-                </properties>
-              </component>
-              <component id="2d340" class="javax.swing.JButton" binding="cayButton">
-                <constraints>
-                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Çay"/>
-                </properties>
-              </component>
-              <component id="351fb" class="javax.swing.JButton" binding="frappeButton" default-binding="true">
-                <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Frappe"/>
-                </properties>
-              </component>
-              <component id="8f877" class="javax.swing.JButton" binding="limonataButton" default-binding="true">
-                <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Limonata"/>
-                </properties>
-              </component>
-              <component id="1f784" class="javax.swing.JButton" binding="macchiatoButton" default-binding="true">
-                <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Macchiato"/>
-                </properties>
-              </component>
-              <component id="28368" class="javax.swing.JButton" binding="eklerButton" default-binding="true">
-                <constraints>
-                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Ekler"/>
-                </properties>
-              </component>
-              <component id="b3ac4" class="javax.swing.JButton" binding="donutButton" default-binding="true">
-                <constraints>
-                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Donut"/>
-                </properties>
-              </component>
-              <component id="ed0d6" class="javax.swing.JButton" binding="kruvasanButton" default-binding="true">
-                <constraints>
-                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Kruvasan"/>
-                </properties>
-              </component>
-              <component id="3e7bc" class="javax.swing.JButton" binding="corekButton">
-                <constraints>
-                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Çörek"/>
-                </properties>
-              </component>
               <component id="29701" class="javax.swing.JLabel" binding="SicakIceceklerLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -204,12 +76,49 @@
                   <text value="Tuzlular"/>
                 </properties>
               </component>
-              <component id="cd96c" class="javax.swing.JButton" binding="filtreKahveButton" default-binding="true">
+              <component id="56895" class="javax.swing.JList" binding="SicakIcecekler">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
                 </constraints>
                 <properties>
-                  <text value="Filtre Kahve"/>
+                  <background color="-7902121"/>
+                  <foreground color="-16777216"/>
+                  <model/>
+                </properties>
+              </component>
+              <component id="41af3" class="javax.swing.JList" binding="SogukIcecekler">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-7902121"/>
+                  <foreground color="-16777216"/>
+                </properties>
+              </component>
+              <component id="9cf33" class="javax.swing.JList" binding="Tatlilar">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-7902121"/>
+                  <foreground color="-16777216"/>
+                </properties>
+              </component>
+              <component id="507e0" class="javax.swing.JList" binding="Tuzlular">
+                <constraints>
+                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-7902121"/>
+                  <foreground color="-16777216"/>
                 </properties>
               </component>
             </children>
@@ -278,7 +187,7 @@
       </grid>
       <component id="852b0" class="javax.swing.JButton" binding="Menu">
         <constraints>
-          <grid row="1" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Menü"/>
@@ -286,7 +195,7 @@
       </component>
       <component id="f83f1" class="javax.swing.JButton" binding="Gecmis">
         <constraints>
-          <grid row="1" column="3" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Geçmiş Siparişler"/>
@@ -294,7 +203,7 @@
       </component>
       <component id="220a7" class="javax.swing.JButton" binding="SiparisOlustur">
         <constraints>
-          <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Sipariş Oluştur"/>
@@ -302,7 +211,7 @@
       </component>
       <component id="842d5" class="javax.swing.JButton" binding="Iptal">
         <constraints>
-          <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="İptal"/>

@@ -1,4 +1,6 @@
     import javax.swing.*;
+    import javax.swing.event.ListSelectionEvent;
+    import javax.swing.event.ListSelectionListener;
     import javax.swing.filechooser.FileNameExtensionFilter;
     import java.awt.event.ActionEvent;
     import java.awt.event.ActionListener;
@@ -10,195 +12,73 @@
 
     public class Kafe {
         private Siparis siparis = new Siparis();
-        private DefaultListModel<String> listModel;
-        private static final String MENU_FILE_PATH = "menu.txt";
+        private DefaultListModel<String> siparisList;
+        private DefaultListModel<String> sicakIceceklerList;
+        private DefaultListModel<String> sogukIceceklerList;
+        private DefaultListModel<String> tatlilarList;
+        private DefaultListModel<String> tuzlularList;
+        private static final String SICAK_FILE = "sicakIcecek.txt";
+        private static final String SOGUK_FILE = "sogukIcecek.txt";
+        private static final String TATLILAR_FILE = "tatli.txt";
+        private static final String TUZLULAR_FILE = "tuzlu.txt";
         private List<Urun> menu = new ArrayList<>();
+        private List<Urun> sicaklar = new ArrayList<>();
+        private List<Urun> soguklar = new ArrayList<>();
+        private List<Urun> tatlilar = new ArrayList<>();
+        private List<Urun> tuzlular = new ArrayList<>();
 
 
         private JPanel anaPanel, eklenenUrunler, UrunButonlari, ustPanel, urunButonlari;
-        private JButton cheesecakeButton, sandvicButton, smoothieButton, filtreKahveButton, americanoButton, espressoButton, bubbleTeaButton, cappuccinoButton, latteButton, cayButton, macchiatoButton, frappeButton, limonataButton, eklerButton, donutButton, kruvasanButton, corekButton;
         private JList list1;
         private JButton SiparisOlustur, Iptal, Menu, Gecmis;
         private JLabel Urunler, SicakIceceklerLabel, SogukIceceklerLabel, TatlilarLabel, TuzlularLabel, labelTF, ToplamFiyat;
-
+        private JList SicakIcecekler;
+        private JList SogukIcecekler;
+        private JList Tatlilar;
+        private JList Tuzlular;
 
         public Kafe() {
-            listModel = new DefaultListModel<>();
-            list1.setModel(listModel);
-            readMenuFromFile();
+            siparisList = new DefaultListModel<>();
+            sicakIceceklerList = new DefaultListModel<>();
+            sogukIceceklerList = new DefaultListModel<>();
+            tatlilarList = new DefaultListModel<>();
+            tuzlularList = new DefaultListModel<>();
+            list1.setModel(siparisList);
+            SicakIcecekler.setModel(sicakIceceklerList);
+            SogukIcecekler.setModel(sogukIceceklerList);
+            Tatlilar.setModel(tatlilarList);
+            Tuzlular.setModel(tuzlularList);
 
-            filtreKahveButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
+            readMenuFromFile(SICAK_FILE,sicaklar,sicakIceceklerList);
+            readMenuFromFile(SOGUK_FILE,soguklar,sogukIceceklerList);
+            readMenuFromFile(TATLILAR_FILE,tatlilar,tatlilarList);
+            readMenuFromFile(TUZLULAR_FILE,tuzlular,tuzlularList);
 
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Filtre Kahve - " + selectedSize;
-                        selectItem(itemName);
-                    }
+            SicakIcecekler.addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    addSelectedItemToSiparisList(SicakIcecekler);
                 }
             });
-            americanoButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
 
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Americano - " + selectedSize;
-                        selectItem(itemName);
-                    }
+            SogukIcecekler.addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    addSelectedItemToSiparisList(SogukIcecekler);
                 }
             });
-            espressoButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
 
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Espresso - " + selectedSize;
-                        selectItem(itemName);
-                    }
+            Tatlilar.addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    addSelectedItemToSiparisList(Tatlilar);
                 }
             });
-            cappuccinoButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
 
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Cappuccino - " + selectedSize;
-                        selectItem(itemName);
-                    }
-                }
-            });
-            macchiatoButton.addActionListener(new ActionListener() {
+            Tuzlular.addListSelectionListener(new ListSelectionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
-
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Macchiato - " + selectedSize;
-                        selectItem(itemName);
-                    }
-                }
-            });
-            latteButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
-
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Latte - " + selectedSize;
-                        selectItem(itemName);
-                    }
-                }
-            });
-            cayButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
-
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Çay - " + selectedSize;
-                        selectItem(itemName);
-                    }
-                }
-            });
-            smoothieButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
-
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Smoothie - " + selectedSize;
-                        selectItem(itemName);
-                    }
-                }
-            });
-            bubbleTeaButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
-
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Bubble Tea - " + selectedSize;
-                        selectItem(itemName);
-                    }
-                }
-            });
-            frappeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
-
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Frappe - " + selectedSize;
-                        selectItem(itemName);
-                    }
-                }
-            });
-            limonataButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String[] sizes = {"Small", "Medium", "Large"};
-                    String selectedSize = promptForSize("Boy seçiniz.", sizes);
-
-                    if (selectedSize != null && !selectedSize.isEmpty()) {
-                        String itemName = "Limonata - " + selectedSize;
-                        selectItem(itemName);
-                    }
-                }
-            });
-            cheesecakeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String itemName = "Cheesecake";
-                    selectItem(itemName);
-                }
-            });
-            eklerButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String itemName = "Ekler";
-                    selectItem(itemName);
-                }
-            });
-            donutButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String itemName = "Donut";
-                    selectItem(itemName);
-                }
-            });
-            kruvasanButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String itemName = "Kruvasan";
-                    selectItem(itemName);
-                }
-            });
-            sandvicButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String itemName = "Sandviç";
-                    selectItem(itemName);
-                }
-            });
-            corekButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String itemName = "Çörek";
-                    selectItem(itemName);
+                public void valueChanged(ListSelectionEvent e) {
+                    addSelectedItemToSiparisList(Tuzlular);
                 }
             });
 
@@ -220,7 +100,7 @@
                     siparis.dosyayaYaz();
 
                     // Clear the listModel to remove the current items in list1
-                    listModel.clear();
+                    siparisList.clear();
 
                     // Display a message indicating that the order details have been successfully saved
                     JOptionPane.showMessageDialog(anaPanel, "Sipariş detayları başarıyla kaydedildi.");
@@ -247,8 +127,8 @@
         }
 
 
-        private void readMenuFromFile() {
-            try (BufferedReader reader = new BufferedReader(new FileReader(MENU_FILE_PATH))) {
+        private void readMenuFromFile(String path, List<Urun> list, DefaultListModel<String> listModel) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split(",");
@@ -256,12 +136,16 @@
                         float fiyat = Float.parseFloat(parts[0]);
                         String isim = parts[1];
                         String boy = parts[2];
-                        Icecek icecek = new Icecek(fiyat,isim,boy);
+                        Icecek icecek = new Icecek(fiyat, isim, boy);
+                        list.add(icecek);
+                        listModel.addElement(isim + " - " + boy); // Add the item to the listModel
                         menu.add(icecek);
                     } else if (parts.length == 2) {
                         float fiyat = Float.parseFloat(parts[0]);
                         String isim = parts[1];
-                        Yiyecek yiyecek = new Yiyecek(fiyat,isim);
+                        Yiyecek yiyecek = new Yiyecek(fiyat, isim);
+                        list.add(yiyecek);
+                        listModel.addElement(isim); // Add the item to the listModel
                         menu.add(yiyecek);
                     }
                 }
@@ -270,15 +154,16 @@
             }
         }
 
+
         private void selectItem(String itemName) {
             for (Urun urun : menu) {
                 if (urun instanceof Icecek && (urun.isim + " - " + ((Icecek) urun).boy).equals(itemName)) {
-                    listModel.addElement(itemName);
+                    siparisList.addElement(itemName);
                     siparis.urunEkle((Icecek) urun);
                     updateToplamFiyatLabel();
                     break;
                 } else if (urun instanceof Yiyecek && urun.isim.equals(itemName)) {
-                    listModel.addElement(itemName);
+                    siparisList.addElement(itemName);
                     siparis.urunEkle((Yiyecek) urun);
                     updateToplamFiyatLabel();
                     break;
@@ -313,13 +198,13 @@
         }
 
         private void removeLastItem() {
-            int lastIndex = listModel.getSize() - 1;
+            int lastIndex = siparisList.getSize() - 1;
             if (lastIndex >= 0) {
                 // Get the last added item in the list
-                String removedItem = listModel.getElementAt(lastIndex);
+                String removedItem = siparisList.getElementAt(lastIndex);
 
                 // Remove the item from the list
-                listModel.removeElementAt(lastIndex);
+                siparisList.removeElementAt(lastIndex);
 
                 // Find the corresponding Urun and remove it from the order
                 for (Urun urun : menu) {
@@ -333,6 +218,7 @@
             // Update the total price label
             updateToplamFiyatLabel();
         }
+
 
         private void showSavedSiparisFiles() {
             JFileChooser fileChooser = new JFileChooser();
@@ -349,6 +235,15 @@
                 openAndDisplayFile(selectedFile);
             }
         }
+        private void addSelectedItemToSiparisList(JList list) {
+            Object selectedValue = list.getSelectedValue();
+            if (selectedValue != null) {
+                selectItem(selectedValue.toString());
+                updateToplamFiyatLabel();
+                list.clearSelection();  // Clear the selection after adding the item
+            }
+        }
+
 
         private void openAndDisplayFile(File file) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
