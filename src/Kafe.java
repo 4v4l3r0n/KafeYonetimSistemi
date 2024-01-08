@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 
-public class Kafe {
-    private Siparis siparis = new Siparis();
+public class Kafe implements IMenu{
+    private final Siparis siparis = new Siparis();
 
     //JList'lerde kullanılmak üzere oluşturulan DefaultListModel'leri
-    private DefaultListModel<String> siparisList;
-    private DefaultListModel<String> sicakIceceklerList;
-    private DefaultListModel<String> sogukIceceklerList;
-    private DefaultListModel<String> tatlilarList;
-    private DefaultListModel<String> tuzlularList;
+    private final DefaultListModel<String> siparisList;
+    private final DefaultListModel<String> sicakIceceklerList;
+    private final DefaultListModel<String> sogukIceceklerList;
+    private final DefaultListModel<String> tatlilarList;
+    private final DefaultListModel<String> tuzlularList;
 
     //dosya isimlerini tutmak için oluşturulan değişkenler
     private static final String SICAK_FILE = "sicakIcecek.txt";
@@ -28,11 +28,11 @@ public class Kafe {
     private static final String TUZLULAR_FILE = "tuzlu.txt";
 
     //daha sonra DefaultListModel'lere atanacak list'ler
-    private List<Urun> menu = new ArrayList<>();
-    private List<Urun> sicaklar = new ArrayList<>();
-    private List<Urun> soguklar = new ArrayList<>();
-    private List<Urun> tatlilar = new ArrayList<>();
-    private List<Urun> tuzlular = new ArrayList<>();
+    private final List<Urun> menu = new ArrayList<>();
+    private final List<Urun> sicaklar = new ArrayList<>();
+    private final List<Urun> soguklar = new ArrayList<>();
+    private final List<Urun> tatlilar = new ArrayList<>();
+    private final List<Urun> tuzlular = new ArrayList<>();
 
     //GUI birimleri
     private JPanel anaPanel, eklenenUrunler, UrunButonlari, ustPanel, urunButonlari;
@@ -133,7 +133,7 @@ public class Kafe {
     }
 
 
-    private void readMenuFromFile(String path, List<Urun> list, DefaultListModel<String> listModel) {
+    public void readMenuFromFile(String path, List<Urun> list, DefaultListModel<String> listModel) {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -144,14 +144,14 @@ public class Kafe {
                     String boy = parts[2];
                     Icecek icecek = new Icecek(fiyat, isim, boy);
                     list.add(icecek);
-                    listModel.addElement(isim + " - " + boy);
+                    listModel.addElement(isim + " - " + boy + " - " + fiyat +"$");
                     menu.add(icecek);
                 } else if (parts.length == 2) {
                     float fiyat = Float.parseFloat(parts[0]);
                     String isim = parts[1];
                     Yiyecek yiyecek = new Yiyecek(fiyat, isim);
                     list.add(yiyecek);
-                    listModel.addElement(isim);
+                    listModel.addElement(isim + " - " + fiyat +"$");
                     menu.add(yiyecek);
                 }
             }
@@ -161,7 +161,7 @@ public class Kafe {
     }
 
 
-    private void openAndModifyMenuFile() {
+    public void openAndModifyMenuFile() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Düzenlenecek text dosyasını seçiniz:");
         fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", "txt"));
@@ -178,7 +178,7 @@ public class Kafe {
         }
     }
 
-    private void modifyMenuFile(File file) {
+    public void modifyMenuFile(File file) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             StringBuilder content = new StringBuilder();
             String line;
@@ -257,12 +257,12 @@ public class Kafe {
 
     private void selectItem(String itemName) {
         for (Urun urun : menu) {
-            if (urun instanceof Icecek && (urun.isim + " - " + ((Icecek) urun).boy).equals(itemName)) {
+            if (urun instanceof Icecek && (urun.isim + " - " + ((Icecek) urun).boy + " - " + urun.fiyat + "$").equals(itemName)) {
                 siparisList.addElement(itemName);
                 siparis.urunEkle((Icecek) urun);
                 updateToplamFiyatLabel();
                 break;
-            } else if (urun instanceof Yiyecek && urun.isim.equals(itemName)) {
+            } else if (urun instanceof Yiyecek && (urun.isim + " - " + urun.fiyat + "$").equals(itemName)) {
                 siparisList.addElement(itemName);
                 siparis.urunEkle((Yiyecek) urun);
                 updateToplamFiyatLabel();
@@ -296,7 +296,7 @@ public class Kafe {
 
             // ürünü siparişten sil
             for (Urun urun : menu) {
-                if ((urun.isim + (urun instanceof Icecek ? " - " + ((Icecek) urun).boy : "")).equals(removedItem)) {
+                if ((urun.isim + (urun instanceof Icecek ? " - " + ((Icecek) urun).boy : "") + " - " + urun.fiyat + "$").equals(removedItem)) {
                     siparis.urunler.remove(urun);
                     break;
                 }
